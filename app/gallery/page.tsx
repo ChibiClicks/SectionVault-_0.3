@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { Loader, Database } from 'lucide-react';
 import { getPublicCodes, type UserCode } from '@/lib/supabase/client';
+import Link from 'next/link';
 
 export default function GalleryPage() {
     const [publicCodes, setPublicCodes] = useState<UserCode[]>([]);
@@ -20,15 +21,16 @@ export default function GalleryPage() {
         try {
             const codes = await getPublicCodes();
             setPublicCodes(codes);
-        } catch (error: any) {
-            console.error('Error loading public codes:', error);
-            setError(error.message || 'Failed to load gallery');
+        } catch (error: unknown) {
+            const err = error as Error;
+            console.error('Error loading public codes:', err);
+            setError(err.message || 'Failed to load gallery');
         } finally {
             setLoading(false);
         }
     };
 
-    const filteredCodes = publicCodes.filter(code =>
+    const filteredCodes = publicCodes.filter((code: UserCode) =>
         code.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         (code.description?.toLowerCase().includes(searchQuery.toLowerCase()))
     );
@@ -54,12 +56,12 @@ export default function GalleryPage() {
                         </ol>
                     </div>
                     <div className="flex gap-3">
-                        <a
+                        <Link
                             href="/editor"
                             className="flex-1 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
                         >
                             Try Editor Instead
-                        </a>
+                        </Link>
                         <button
                             onClick={loadPublicCodes}
                             className="flex-1 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50"
@@ -104,8 +106,8 @@ export default function GalleryPage() {
                 {/* Codes Grid */}
                 {filteredCodes.length > 0 ? (
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {filteredCodes.map((code) => (
-                            <a
+                        {filteredCodes.map((code: UserCode) => (
+                            <Link
                                 key={code.id}
                                 href={`/gallery/${code.id}`}
                                 className="bg-white p-6 rounded-xl border border-gray-200 hover:border-indigo-300 hover:shadow-lg transition-all cursor-pointer"
@@ -124,7 +126,7 @@ export default function GalleryPage() {
                                     <span>by {code.clerk_user_id.slice(0, 8)}...</span>
                                     <span>{new Date(code.created_at).toLocaleDateString()}</span>
                                 </div>
-                            </a>
+                            </Link>
                         ))}
                     </div>
                 ) : (
@@ -143,12 +145,12 @@ export default function GalleryPage() {
                         ) : (
                             <>
                                 <p className="text-gray-500 mb-4">No public codes yet</p>
-                                <a
+                                <Link
                                     href="/editor"
                                     className="inline-block px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
                                 >
                                     Create the First One →
-                                </a>
+                                </Link>
                             </>
                         )}
                     </div>

@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { BuilderState, Block } from '@/types';
+import { BuilderState } from '@/types';
 
 export const useBuilderStore = create<BuilderState>((set) => ({
     blocks: [],

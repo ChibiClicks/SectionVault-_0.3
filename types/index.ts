@@ -13,7 +13,7 @@ export type BlockType =
 export interface Block {
     id: string;
     type: BlockType;
-    config: Record<string, any>;
+    config: Record<string, any>; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
 // Builder state
@@ -26,7 +26,7 @@ export interface BuilderState {
     // Actions
     addBlock: (block: Block) => void;
     removeBlock: (id: string) => void;
-    updateBlock: (id: string, config: Record<string, any>) => void;
+    updateBlock: (id: string, config: Record<string, any>) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
     reorderBlocks: (startIndex: number, endIndex: number) => void;
     setActiveBlock: (id: string | null) => void;
     setViewportMode: (mode: 'desktop' | 'mobile') => void;

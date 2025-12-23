@@ -8,7 +8,7 @@ import BlockCanvas from '@/components/builder/BlockCanvas';
 import BlockSettings from '@/components/builder/BlockSettings';
 import CodeViewer from '@/components/code/CodeViewer';
 import ImageUploader from '@/components/builder/ImageUploader';
-import { Monitor, Smartphone, Save, Copy, Download } from 'lucide-react';
+import { Monitor, Smartphone, Save, Download } from 'lucide-react';
 
 export default function BuilderPage() {
     const [activeTab, setActiveTab] = useState<'builder' | 'code'>('builder');

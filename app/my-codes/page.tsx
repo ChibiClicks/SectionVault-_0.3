@@ -4,6 +4,7 @@ import { useEffect, useState, useCallback } from 'react';
 import { useUser } from '@clerk/nextjs';
 import { Pencil, Trash2, Globe, Lock, Loader, Database } from 'lucide-react';
 import { getUserCodes, deleteCode, type UserCode } from '@/lib/supabase/client';
+import Link from 'next/link';
 
 export default function MyCodesPage() {
     const { user } = useUser();
@@ -20,9 +21,10 @@ export default function MyCodesPage() {
         try {
             const userCodes = await getUserCodes(user.id);
             setCodes(userCodes);
-        } catch (error: any) {
-            console.error('Error loading codes:', error);
-            setError(error.message || 'Failed to load codes');
+        } catch (error: unknown) {
+            const err = error as Error;
+            console.error('Error loading codes:', err);
+            setError(err.message || 'Failed to load codes');
         } finally {
             setLoading(false);
         }
@@ -66,12 +68,12 @@ export default function MyCodesPage() {
                         </p>
                     </div>
                     <div className="flex gap-3">
-                        <a
+                        <Link
                             href="/editor"
                             className="flex-1 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
                         >
                             Go to Editor
-                        </a>
+                        </Link>
                         <button
                             onClick={loadCodes}
                             className="flex-1 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50"
@@ -103,12 +105,12 @@ export default function MyCodesPage() {
                         </p>
                     </div>
 
-                    <a
+                    <Link
                         href="/editor"
                         className="px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 font-semibold"
                     >
                         + New Code
-                    </a>
+                    </Link>
                 </div>
 
                 {/* Codes Grid */}
@@ -145,13 +147,13 @@ export default function MyCodesPage() {
                                     </span>
 
                                     <div className="flex gap-2">
-                                        <a
+                                        <Link
                                             href={`/editor?id=${code.id}`}
                                             className="p-2 hover:bg-indigo-50 rounded-lg transition"
                                             title="Edit"
                                         >
                                             <Pencil size={16} className="text-indigo-600" />
-                                        </a>
+                                        </Link>
                                         <button
                                             onClick={() => handleDelete(code.id)}
                                             disabled={deleting === code.id}
@@ -176,12 +178,12 @@ export default function MyCodesPage() {
                         <p className="text-gray-400 mb-6">
                             Create your first Liquid section preview
                         </p>
-                        <a
+                        <Link
                             href="/editor"
                             className="inline-block px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 font-semibold"
                         >
                             Create Your First Code →
-                        </a>
+                        </Link>
                     </div>
                 )}
             </div>

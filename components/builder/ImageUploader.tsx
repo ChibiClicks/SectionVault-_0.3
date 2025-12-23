@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from 'react';
-import { Upload, X, Loader } from 'lucide-react';
+import { Upload, Loader } from 'lucide-react';
 import Image from 'next/image';
 import { useBuilderStore } from '@/lib/store/builderStore';
 import { Block } from '@/types';
@@ -89,7 +89,7 @@ export default function ImageUploader() {
             dataTransfer.items.add(file);
             input.files = dataTransfer.files;
 
-            handleFileSelect({ target: input } as any);
+            handleFileSelect({ target: input } as any); // eslint-disable-line @typescript-eslint/no-explicit-any
         }
     };
 

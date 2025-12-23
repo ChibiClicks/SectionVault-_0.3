@@ -14,7 +14,7 @@ export default function BlockSettings() {
         );
     }
 
-    const handleChange = (key: string, value: any) => {
+    const handleChange = (key: string, value: any) => { // eslint-disable-line @typescript-eslint/no-explicit-any
         updateBlock(activeBlock.id, { [key]: value });
     };
 

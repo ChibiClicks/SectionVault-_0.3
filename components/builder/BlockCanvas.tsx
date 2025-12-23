@@ -2,11 +2,12 @@
 
 import { useBuilderStore } from '@/lib/store/builderStore';
 import { GripVertical, Trash2, Copy } from 'lucide-react';
+import { Block } from '@/types';
 
 export default function BlockCanvas() {
     const { blocks, activeBlockId, setActiveBlock, removeBlock } = useBuilderStore();
 
-    const handleDuplicate = (block: any) => {
+    const handleDuplicate = (block: Block) => {
         const newBlock = {
             ...block,
             id: `block-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
@@ -34,8 +35,8 @@ export default function BlockCanvas() {
                         key={block.id}
                         onClick={() => setActiveBlock(block.id)}
                         className={`group p-3 rounded-lg border-2 transition cursor-pointer ${activeBlockId === block.id
-                                ? 'border-indigo-500 bg-indigo-50'
-                                : 'border-gray-200 bg-white hover:border-indigo-300'
+                            ? 'border-indigo-500 bg-indigo-50'
+                            : 'border-gray-200 bg-white hover:border-indigo-300'
                             }`}
                     >
                         <div className="flex items-center justify-between">

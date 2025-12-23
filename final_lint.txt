@@ -1,0 +1,12 @@
+[0m[0m
+[0m[4mC:\Users\XLAP1\Desktop\SectionVault-_0.3\app\builder\page.tsx[24m[0m
+[0m  [2m11:37[22m  [33mwarning[39m  'Copy' is defined but never used  [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m[0m
+[0m[4mC:\Users\XLAP1\Desktop\SectionVault-_0.3\components\editor\LiquidPreview.tsx[24m[0m
+[0m  [2m55:57[22m  [31merror[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m[0m
+[0m[4mC:\Users\XLAP1\Desktop\SectionVault-_0.3\components\preview\SectionPreview.tsx[24m[0m
+[0m  [2m30:9[22m  [33mwarning[39m  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  [2m@next/next/no-img-element[22m[0m
+[0m[0m
+[0m[31m[1m✖ 3 problems (1 error, 2 warnings)[22m[39m[0m
+[0m[31m[1m[22m[39m[0m

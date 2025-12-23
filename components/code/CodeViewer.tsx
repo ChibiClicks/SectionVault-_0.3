@@ -3,9 +3,10 @@
 import { useBuilderStore } from '@/lib/store/builderStore';
 import { Copy, Check } from 'lucide-react';
 import { useState } from 'react';
+import { Block } from '@/types';
 
 // Code generator function
-function generateLiquidCode(blocks: any[], sectionName: string): string {
+function generateLiquidCode(blocks: Block[], sectionName: string): string {
     let liquidCode = `<div class="section-${sectionName.toLowerCase().replace(/\s+/g, '-')}">\n`;
 
     blocks.forEach((block, index) => {
@@ -125,8 +126,8 @@ export default function CodeViewer() {
                 <button
                     onClick={handleCopy}
                     className={`px-4 py-2 rounded-lg flex items-center gap-2 transition ${copied
-                            ? 'bg-green-600 text-white'
-                            : 'bg-indigo-600 text-white hover:bg-indigo-700'
+                        ? 'bg-green-600 text-white'
+                        : 'bg-indigo-600 text-white hover:bg-indigo-700'
                         }`}
                 >
                     {copied ? (

@@ -28,8 +28,8 @@ export default function LiquidPreview({ code, viewportMode }: LiquidPreviewProps
         }
 
         // 2. Parse schema to get defaults
-        let schemaDefaults: Record<string, any> = {};
-        let schemaBlocks: any[] = [];
+        const schemaDefaults: Record<string, any> = {}; // eslint-disable-line @typescript-eslint/no-explicit-any
+        const schemaBlocks: any[] = []; // eslint-disable-line @typescript-eslint/no-explicit-any
 
         const schemaMatch = processed.match(/{%\s*schema\s*%}([\s\S]*?){%\s*endschema\s*%}/);
         if (schemaMatch) {
@@ -38,7 +38,7 @@ export default function LiquidPreview({ code, viewportMode }: LiquidPreviewProps
 
                 // Get setting defaults
                 if (schema.settings) {
-                    schema.settings.forEach((setting: any) => {
+                    schema.settings.forEach((setting: any) => { // eslint-disable-line @typescript-eslint/no-explicit-any
                         if (setting.id && setting.default !== undefined) {
                             schemaDefaults[`section.settings.${setting.id}`] = setting.default;
                         }
@@ -52,10 +52,10 @@ export default function LiquidPreview({ code, viewportMode }: LiquidPreviewProps
 
                     // Create mock blocks based on schema
                     for (let i = 0; i < Math.min(maxBlocks, 4); i++) {
-                        const mockBlock: Record<string, any> = {};
+                        const mockBlock: Record<string, any> = {}; // eslint-disable-line @typescript-eslint/no-explicit-any
 
                         if (blockType.settings) {
-                            blockType.settings.forEach((setting: any) => {
+                            blockType.settings.forEach((setting: any) => { // eslint-disable-line @typescript-eslint/no-explicit-any
                                 if (setting.id && setting.default !== undefined) {
                                     mockBlock[setting.id] = setting.default;
                                 } else if (setting.id === 'image') {

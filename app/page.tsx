@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function HomePage() {
     return (
         <main className="min-h-screen">
@@ -18,18 +20,18 @@ export default function HomePage() {
                     </p>
 
                     <div className="flex gap-4 justify-center flex-wrap">
-                        <a
+                        <Link
                             href="/editor"
                             className="px-8 py-4 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                         >
                             Start Previewing →
-                        </a>
-                        <a
+                        </Link>
+                        <Link
                             href="/gallery"
                             className="px-8 py-4 bg-white text-indigo-600 border-2 border-indigo-600 rounded-lg font-semibold hover:bg-indigo-50"
                         >
                             Browse Gallery
-                        </a>
+                        </Link>
                     </div>
                 </div>
 
@@ -125,12 +127,12 @@ export default function HomePage() {
                     <p className="text-xl mb-8 opacity-90">
                         Join developers sharing and discovering amazing Shopify section code.
                     </p>
-                    <a
+                    <Link
                         href="/editor"
                         className="inline-block px-8 py-4 bg-white text-indigo-600 rounded-lg font-semibold hover:bg-gray-100 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                     >
                         Start Previewing for Free →
-                    </a>
+                    </Link>
                 </div>
             </section>
         </main>
